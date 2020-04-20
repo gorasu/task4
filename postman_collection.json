@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "5cbe23f6-823d-43a6-9e3b-457b8961678c",
+		"name": "http://arch.homework/otusapp/v1/user/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad223c53-4d49-4d52-bf7c-5b567c41791e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8472061-319b-4d96-908a-863d785c7932",
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)",
+							"pm.collectionVariables.set('user_id', responseJSON['user_id'])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/otusapp/v1/user/create?email={{$randomEmail}}&firstName={{$randomFileName}}&lastName={{$randomLastName}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"otusapp",
+						"v1",
+						"user",
+						"create"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{$randomEmail}}"
+						},
+						{
+							"key": "firstName",
+							"value": "{{$randomFileName}}"
+						},
+						{
+							"key": "lastName",
+							"value": "{{$randomLastName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad223c53-4d49-4d52-bf7c-5b567c41791e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8472061-319b-4d96-908a-863d785c7932",
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)",
+							"pm.collectionVariables.set('user_id', responseJSON['user_id'])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/otusapp/v1/user/update/{{user_id}}?firstName={{$randomFileName}}&lastName={{$randomLastName}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"otusapp",
+						"v1",
+						"user",
+						"update",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "{{$randomFileName}}"
+						},
+						{
+							"key": "lastName",
+							"value": "{{$randomLastName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShowUserById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/otusapp/v1/user/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"otusapp",
+						"v1",
+						"user",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/otusapp/v1/user/",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"otusapp",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/otusapp/v1/user/delete/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"otusapp",
+						"v1",
+						"user",
+						"delete",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "19f6738b-c212-4630-886b-25131370d722",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6c1e02b3-36e1-4a29-bdad-fb30f6f19171",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d8100102-318c-4e0f-ad0e-1909db8bda94",
+			"key": "baseUrl",
+			"value": "arch.homework",
+			"type": "string"
+		},
+		{
+			"id": "32648e10-4e3b-4d55-8288-876d6c33fcb3",
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
