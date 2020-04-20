@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: task4-config
+data:
+  DATABASE_URL: postgresql://myuser:passwd@postgres/appdb
+  APP_ENV: dev
+  APP_SECRET: "ewjioejwoirj43ij2390840923ue3jdi23jedwEDEJIjoejwdqwopijdp23je23"
