@@ -1,0 +1,10 @@
+
+
+
+mariadb:
+  image:
+    tag: 10.1.33
+  db:
+    name: "myapp"
+    user: "admin"
+    password: "110788"
