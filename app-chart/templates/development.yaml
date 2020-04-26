@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task4-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: task4-label-dep
+  template:
+    metadata:
+      labels:
+        app: task4-label-dep
+    spec:
+      containers:
+        - name: task4-container
+          image: gorasu/task4:v1
+          ports:
+            - name: web
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: task4-config
