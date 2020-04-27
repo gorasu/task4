@@ -1,20 +1,20 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: task4-migrate
+  name: {{ include "app-chart.fullname" . }}
 spec:
   completions: 1
   template:
     metadata:
-      name: task4-migrate
+      name: {{ include "app-chart.fullname" . }}
     spec:
       restartPolicy: OnFailure
       containers:
         - name: post-install-job
           envFrom:
               - configMapRef:
-                  name: task4-config
-          image: gorasu/task4:v1
+                  name: {{ include "app-chart.fullname" . }}
+          image: gorasu/task4:{{ .Values.app.version }}
           command:
             - sh
             - "-c"
