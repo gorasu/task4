@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task4-dep
+  name: {{ include "app-chart.fullname" . }}
 spec:
   replicas: 2
   selector:
@@ -13,11 +13,11 @@ spec:
         app: task4-label-dep
     spec:
       containers:
-        - name: task4-container
-          image: gorasu/task4:v1
+        - name: {{ include "app-chart.fullname" . }}
+          image: gorasu/task4:{{ .Values.app.version }}
           ports:
             - name: web
               containerPort: 8000
           envFrom:
             - configMapRef:
-                name: task4-config
+                name: {{ include "app-chart.fullname" . }}
