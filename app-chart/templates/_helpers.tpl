@@ -1,5 +1,5 @@
 {{- define "app-chart.connect" -}}
-{{- printf "mysql://%s:%s@%s:%v/%s" .Values.mysql.db.user .Values.mysql.db.password (include "mysql.fullname" .)  .Values.mysql.service.port .Values.mysql.db.name }}
+{{- printf "mysql://%s:%s@%s:%v/%s" .Values.mysql.db.user .Values.mysql.db.password (print .Release.Name "-mysql")  .Values.mysql.service.port .Values.mysql.db.name }}
 {{- end -}}
 
 
