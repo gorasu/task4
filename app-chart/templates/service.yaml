@@ -4,7 +4,7 @@ metadata:
   name: {{ include "app-chart.fullname" . }}
 spec:
   selector:
-    app: task4-label-dep
+    app: {{ include "app-chart.fullname" . }}-label
   ports:
     - protocol: TCP
       port: 9000

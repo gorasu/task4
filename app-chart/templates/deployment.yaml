@@ -6,11 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: task4-label-dep
+      app: {{ include "app-chart.fullname" . }}-label
   template:
     metadata:
       labels:
-        app: task4-label-dep
+        app: {{ include "app-chart.fullname" . }}-label
     spec:
       containers:
         - name: {{ include "app-chart.fullname" . }}
