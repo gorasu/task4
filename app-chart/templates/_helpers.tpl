@@ -16,3 +16,6 @@
 {{- end -}}
 {{- end -}}
 
+{{- define "app-chart.labels" -}}
+{{ include "app-chart.fullname" . }}-label
+{{- end -}}
