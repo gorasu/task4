@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: stresstest
+spec:
+  template:
+    metadata:
+      name: stressTestJob
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: "stresstest"
+          image: jordi/ab
+          command:
+            - sh
+            - "-c"
+            - |
+              while true; \
+                do \
+                echo -e "email=voronin@z-site.ru&firstName=Александр&lastName=Воронин" > /tmp/body; \
+                ab -T application/x-www-form-urlencoded -p /tmp/body -n 20 -c 5  -H'Host: arch.homework' http://nginx-nginx-ingress-controller/otusapp/v1/user/create; \
+                \
+                ab -n 20 -c 5  -H'Host: arch.homework' http://nginx-nginx-ingress-controller/otusapp/v1/user/1; \
+                \
+                ab -n 20 -c 5  -H'Host: arch.homework' http://nginx-nginx-ingress-controller/otusapp/v1/user/; \
+                \
+                echo -e "email=voronin@z-site.ru&firstName=Александр&lastName=Воронин" > /tmp/body; \
+                ab -T application/x-www-form-urlencoded -p /tmp/body -n 20 -c 5  -H'Host: arch.homework' http://nginx-nginx-ingress-controller/otusapp/v1/user/update/1; \
+                \
+                ab -m DELETE -n 20 -c 5  -H'Host: arch.homework' http://nginx-nginx-ingress-controller/otusapp/v1/user/delete/1; \
+                sleep 3; done
+  backoffLimit: 0
